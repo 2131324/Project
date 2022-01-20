@@ -1,0 +1,80 @@
+<%- include('./layout/top')%>
+<%- include('./layout/topbar')%>
+<%- include('./layout/navbar')%>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+
+                        <h1>Edit Details</h1>
+                    </div>
+                       <form method="post" action="/savestudent">   
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <h5>Roll No.</h5>
+                            </td>
+                            <td>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Roll No" name="rollno" value="<%= result[0].rollno%>"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Name of student</h5>
+                            </td>
+                            <td>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Name" name="name" value="<%= result[0].name%>"/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h5>Father's Name</h5>
+                            </td>
+                            <td>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Father's Name" name="fname" value="<%= result[0].fname%>"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Select Class</h5>
+                            </td>
+                            <td>
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="class">
+                                        <option value="0">-- Please Select Class--</option>
+                                        <% for(var i = 0;i<classes.length;i++) {%>
+
+                                            <% if(classes[i].class == result[0].class) {%>
+                                                <option value="<%= classes[i].class%>" selected><%= classes[i].class%></option>
+                                            <% } else {%>
+                                            <option value="<%= classes[i].class%>"><%= classes[i].class%></option>
+                                            <% } %>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="text-align: center;">
+                        <input type="submit" class="btn bg-orange waves-effect">
+                        </input>
+                    </div>
+                    <br>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('./layout/bottom')%>
