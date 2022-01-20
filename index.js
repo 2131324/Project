@@ -7,7 +7,7 @@ var MongoDBStore = require('connect-mongodb-session')(session);
 const route = require('./routes/route')
 
 var store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/project',
+  uri: 'mongodb+srv://admin:admin123@cluster0.pvrrp.mongodb.net/project?retryWrites=true&w=majority',
   collection: 'sessions'
 });
 
