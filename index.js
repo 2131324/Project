@@ -6,6 +6,8 @@ var MongoDBStore = require('connect-mongodb-session')(session);
 
 const route = require('./routes/route')
 
+const PORT = process.env.PORT || 8800
+
 var store = new MongoDBStore({
   uri: 'mongodb+srv://admin:admin123@cluster0.pvrrp.mongodb.net/project?retryWrites=true&w=majority',
   collection: 'sessions'
@@ -33,10 +35,12 @@ app.get('*',(req,res) => {
   res.send('<h1>Page Not Found</h1>') 
 })
 
-mongoose
+
+
+mongoose 
         .connect('mongodb+srv://admin:admin123@cluster0.pvrrp.mongodb.net/project?retryWrites=true&w=majority')
         .then(() => {
-          app.listen(8900,() => {
+          app.listen(PORT,() => {
             console.log('Database Connected');
             console.log('Server Connected at 8900');
           })
