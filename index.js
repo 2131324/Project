@@ -3,13 +3,14 @@ const app = express()
 const mongoose = require('mongoose')
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
+require('dotenv').config()
 
 const route = require('./routes/route')
 
 const PORT = process.env.PORT || 8800
 
 var store = new MongoDBStore({
-  uri: 'mongodb+srv://admin:admin123@cluster0.pvrrp.mongodb.net/project?retryWrites=true&w=majority',
+  uri: process.env.MONGO_URL,
   collection: 'sessions'
 });
 
@@ -38,7 +39,7 @@ app.get('*',(req,res) => {
 
 
 mongoose 
-        .connect('mongodb+srv://admin:admin123@cluster0.pvrrp.mongodb.net/project?retryWrites=true&w=majority')
+        .connect(process.env.MONGO_URL)
         .then(() => {
           app.listen(PORT,() => {
             console.log('Database Connected');
